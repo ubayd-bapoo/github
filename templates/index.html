@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'base_head.html' %}
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">Create Merge Request</h1>
+            {% for message in messages %}
+              {% if forloop.last %}
+              <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+          <form class="form" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                Title: <input type="text" class="form-control form-control-user" id="title" name="title" placeholder="Enter Title">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                Repo: <select name="repo" id="repo" class="form-control form-control-user">
+                        <option disabled selected value> -- select a repo -- </option>
+                        {% for repo in github_details.repos %}
+                            <option value="{{ repo.1 }}">{{ repo.0 }}</option>
+                        {% endfor %}
+                      </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                Source Branch: <select name="source_branch" id="source_branch" class="form-control form-control-user">
+                                    <option disabled selected value> -- select a source branch -- </option>
+                                    {% for repo, branches in github_details.branches.items %}
+                                        {% for branch in branches %}
+                                            <option value="{{ repo }}: {{ branch }}">{{ repo }}: {{ branch }}</option>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                Target Branch: <select name="target_branch" id="target_branch" class="form-control form-control-user">
+                                  <option disabled selected value> -- select a target branch -- </option>
+                                    {% for repo, branches in github_details.branches.items %}
+                                        {% for branch in branches %}
+                                            <option value="{{ repo }}: {{ branch }}">{{ repo }}: {{ branch }}</option>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                Assignee Email: <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Enter Assignee Email">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger">Create</button>
+          </form>
+{% include 'base_foot.html' %}
+{% endblock %}

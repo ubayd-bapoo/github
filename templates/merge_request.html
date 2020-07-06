@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'base_head.html' %}
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">Approve Merge Request</h1>
+            {% for message in messages %}
+              {% if forloop.last %}
+              <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% if view_merge %}
+          <div class="form-row">
+            <p>Merge <b>{{ merge_request.source_branch }}</b> of <b>{{ merge_request.repo }}</b> into <b>{{ merge_request.target_branch }}</b></p>
+          </div>
+          <div class="form-row">
+            <a href="/merge_request_update/{{ merge_request.id }}/merge/" class="btn btn-success btn-icon-split">
+              <span class="icon text-white-50">
+                <i class="fas fa-check"></i>
+              </span>
+              <span class="text">Merge</span>
+            </a>
+            &nbsp
+            <a href="/merge_request_update/{{ merge_request.id }}/reject/" class="btn btn-danger btn-icon-split">
+              <span class="icon text-white-50">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+              <span class="text">Reject</span>
+            </a>
+          </div>
+          {% endif %}
+{% include 'base_foot.html' %}
+{% endblock %}
