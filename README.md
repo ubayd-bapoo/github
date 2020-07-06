@@ -1,5 +1,18 @@
 # Github
 
+## Overview
+Will implement a simple GitHub Merge Request interface allowing users to 
+authenticate using GitHub as identity provider. Once authenticated, users 
+will be able to create merge requests by selecting a source and target 
+branch for any repo they have access to within GitHub, as well as specifying 
+an email address to assign the merge request to a reviewer.
+
+Once assigned a merge request notification email will be sent to the assigned
+ email address, which will contain a link to the merge request in question. 
+ The receiving user opens the link contained in the email they will be directed to 
+ the merge request detail view, within which they will be able to either merge or reject 
+ the request. If the request is merged the branch will be merged on the remote repo.
+
 ## Installation
 ### Initial Installation
 Install Python 3.7 and follow commands. Allow Python to be added to 
