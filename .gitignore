@@ -3,5 +3,5 @@ db.sqlite3
 general/__pycache__/__init__.cpython-37.pyc
 general/__pycache__/
 general/migrations/__pycache__/
-github/__pycache__/
+github_auth/__pycache__/
 venv_github/
