@@ -13,6 +13,8 @@ Once assigned a merge request notification email will be sent to the assigned
  the merge request detail view, within which they will be able to either merge or reject 
  the request. If the request is merged the branch will be merged on the remote repo.
 
+The system is built using a Django framework.
+
 ## Installation
 ### Initial Installation
 Install Python 3.7 and follow commands. Allow Python to be added to 
@@ -52,17 +54,17 @@ Create a super user to access the admin interface, follow the promtes.
 python manage.py createsuperuser
 ```
 
-Run the server
-```bash
-python manage.py runserver
-```
-
 ## Create Github OAuth App
 Create an OAuth app. You will use the credentials genereated in the 
 OAuth for the app.
 [Instruction to create OAuth](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 
 ## Django admin
+Run the server
+```bash
+python manage.py runserver
+```
+
 Once the service is running. Go to the following link. 
 [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
 
