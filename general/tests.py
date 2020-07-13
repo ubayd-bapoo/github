@@ -22,9 +22,14 @@ class HomePageTests(TestCase):
         self.assertTemplateUsed(response, 'account/login.html')
 
     # --------------------------------------------------------------------------
-    def test_login_page_does_not_contain_incorrect_html(self):
-        response = self.client.get('/accounts/login/')
-        self.assertNotContains(response, 'Hi there! I should not be on the page.')
+    def test_login_page_contains_correct_html(self):
+        response = self.client.get('/')
+        self.assertContains(response, '<h1 class="h4 text-gray-900 mb-4">Welcome and Login with Github!</h1>')
+
+    # # --------------------------------------------------------------------------
+    # def test_login_page_does_not_contain_incorrect_html(self):
+    #     response = self.client.get('/accounts/login/')
+    #     self.assertNotContains(response, 'Hi there! I should not be on the page.')
 
     # --------------------------------------------------------------------------
     def test_redirect_when_authenticated(self):
